@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --bg: #f0f2f5;
+  --fg: #222;
+  --card: #fff;
+  --accent: #3da33d;
+}
+
+[data-theme="dark"] {
+  --bg: #1e1e1e;
+  --fg: #eee;
+  --card: #2a2a2a;
+  --accent: #60b160;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.input-container {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  padding: 20px;
+}
+
+.input-container input[type="text"] {
+  width: 70%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  margin-right: 8px;
+  transition: box-shadow 0.2s;
+}
+
+.input-container input[type="text"]:focus {
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.input-container input[type="button"] {
+  background-color: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.input-container input[type="button"]:hover {
+  background-color: #60b160;
+  transform: translateY(-1px);
+}
+
+/* Theme toggle */
+#themeToggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filters button {
+  background: var(--card);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.filters button.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Todo list */
+ul {
+  width: 70%;
+  max-width: 450px;
+  list-style: none;
+}
+
+ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  background: var(--card);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s;
+}
+
+ul li:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+ul li.completed p {
+  text-decoration: line-through;
+  opacity: 0.6;
+  position: relative;
+  overflow: hidden;
+}
+
+ul li p {
+  flex-grow: 1;
+  padding-right: 8px;
+}
+
+/* Buttons */
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 4px 6px;
+  margin-left: 4px;
+  border-radius: 4px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+
+.btn:hover {
+  background: rgba(0,0,0,0.05);
+  transform: translateY(-1px);
+}
+
+.toggle { color: var(--accent); }
+.edit   { color: #28a745; }
+.delete { color: #dc3545; }
+
+/* Micro-animation for strike-through */
+.completed p::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  background: currentColor;
+  width: 0;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: strike 0.3s forwards;
+}
+
+@keyframes strike {
+  to { width: 100%; }
+}
